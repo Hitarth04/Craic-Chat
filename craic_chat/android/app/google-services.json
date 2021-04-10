@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "9108880909",
+    "project_id": "craic-chat-30655",
+    "storage_bucket": "craic-chat-30655.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9108880909:android:911394a31da7bfa5311f44",
+        "android_client_info": {
+          "package_name": "com.HitarthDave.craic_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9108880909-kqp0hdmdja9cftb5ebkjqc7m5d0oufbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPEfcz8nsMBGxACr4TiOyEVTUcANOhLgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9108880909-kqp0hdmdja9cftb5ebkjqc7m5d0oufbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
