@@ -5,29 +5,33 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:craic_chat/components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  static String id = 'welcome_screen';
+  static const String id = 'welcome_screen';
 
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen>
-    with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation animation;
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<Color?> animation;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     controller = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       vsync: this,
     );
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
-        .animate(controller);
+
+    animation = ColorTween(
+      begin: Colors.blueGrey,
+      end: Colors.white,
+    ).animate(controller);
+
     controller.forward();
+
     controller.addListener(() {
       setState(() {});
     });
@@ -42,9 +46,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: animation.value,
+      backgroundColor: animation.value ?? Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,38 +57,41 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               children: <Widget>[
                 Hero(
                   tag: 'logo',
-                  child: Container(
-                    child: Image.asset('images/logo_non.png'),
+                  child: SizedBox(
                     height: 60.0,
+                    child: Image.asset('images/logo_non.png'),
                   ),
                 ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                TypewriterAnimatedTextKit(
-                  text: ['Craic Chat'],
-                  textStyle: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
-                  ),
+                const SizedBox(width: 10.0),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Craic Chat',
+                      textStyle: const TextStyle(
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.black,
+                      ),
+                      speed: const Duration(milliseconds: 200),
+                    ),
+                  ],
+                  repeatForever: false,
+                  totalRepeatCount: 1,
                 ),
               ],
             ),
-            SizedBox(
-              height: 48.0,
-            ),
+            const SizedBox(height: 48.0),
             RoundedButton(
               title: 'Log In',
               color: Colors.lightBlueAccent,
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             RoundedButton(
-              title: 'Registration',
+              title: 'Register',
               color: Colors.blueAccent,
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },
             ),
@@ -94,5 +101,3 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 }
-
-

@@ -5,11 +5,6 @@ import 'package:craic_chat/screens/login_screen.dart';
 import 'package:craic_chat/screens/registration_screen.dart';
 import 'package:craic_chat/screens/chat_screen.dart';
 
-import 'screens/chat_screen.dart';
-import 'screens/login_screen.dart';
-import 'screens/registration_screen.dart';
-import 'screens/welcome_screen.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
